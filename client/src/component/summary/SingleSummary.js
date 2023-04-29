@@ -12,8 +12,14 @@ const SingleSummary = () => {
     (state) => state.singleSummary
   );
 
+  const { isAuthenticated } = useSelector((state) => state.user);
+
   useEffect(() => {
     dispatch(getSingleSummary(id));
+
+    if (!isAuthenticated) {
+      window.location = "/";
+    }
   }, [dispatch, id]);
 
   const date = new Date(summary.createdAt);
@@ -26,18 +32,22 @@ const SingleSummary = () => {
   return (
     <Fragment>
       <div className="single-summary-page">
-        <div className="summary-header">
-          <div className="design-topic">
-            <h3 className="summary-name">{summary.name}</h3>
-            <p className="summary-date">{formattedDate}</p>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="summary-header">
+            <div className="design-topic">
+              <h3 className="summary-name">{summary.name}</h3>
+              <p className="summary-date">{formattedDate}</p>
+            </div>
+            <div className="summary-body">
+              <p>{summary.description}</p>
+            </div>
+            <div className="summary-body">
+              <p>{summary.summary}</p>
+            </div>
           </div>
-          <div className="summary-body">
-            <p>{summary.description}</p>
-          </div>
-          <div className="summary-body">
-            <p>{summary.summary}</p>
-          </div>
-        </div>
+        )}
       </div>
     </Fragment>
   );
