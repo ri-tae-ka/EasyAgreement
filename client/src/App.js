@@ -1,14 +1,21 @@
 import "./App.css";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { loadUser } from "./actions/userActions";
+import store from "./store";
 import Header from "./component/layout/Header";
 import Footer from "./component/layout/Footer";
 import Home from "./component/home/Home";
 import Signup from "./component/user/Signup";
 import Login from "./component/user/Login";
-import { Route, Routes } from "react-router-dom";
-import {BrowserRouter as Router} from "react-router-dom"
+import Summary from "./component/summary/Summary";
 
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
   return (
     <Fragment>
       <Router>
@@ -21,6 +28,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/login" element={<Login />} />
+        </Routes>
+        <Routes>
+          <Route path="/summary" element={<Summary />} />
         </Routes>
         <Footer />
       </Router>

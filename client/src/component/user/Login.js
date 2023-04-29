@@ -1,7 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
+import "./Login.css";
 import { Link } from "react-router-dom";
-import { login, clearErrors } from "../actions/userActions";
+import { login, clearErrors } from "../../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
+import loginimg from "../../images/loginimg.png";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -31,48 +33,53 @@ const Login = () => {
 
   return (
     <Fragment>
-      <section class="login-container">
-        <article class="form-container">
-          <div class="intro">
-            <h1>Login</h1>
-            <p>Please Enter Your details</p>
-          </div>
-
-          <form class="form" onSubmit={handleSubmit}>
-            <div class="email-input">
-              <div class="input-container">
-                <p class="sub-title">Email Address</p>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                  value={loginEmail}
-                  onChange={(e) => setLoginEmail(e.target.value)}
-                />
-              </div>
+      <div className="login-page">
+        <section className="login-container">
+          <article className="form-container">
+            <div className="intro">
+              <h1>Login</h1>
+              <Link to="/signup">New here?</Link>
             </div>
 
-            <div class="email-input">
-              <div class="input-container">
-                <p class="sub-title">Password</p>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  required
-                  value={loginPassword}
-                  onChange={(e) => setLoginPassword(e.target.value)}
-                />
+            <form className="form" onSubmit={handleSubmit}>
+              <div className="email-input">
+                <div className="input-container">
+                  <p className="sub-title">Email Address</p>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    value={loginEmail}
+                    onChange={(e) => setLoginEmail(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
 
-            <Link to="/password/forgot">Forgot Password?</Link>
-            <br />
-            <input type="submit" value="Login" className="loginBtn" />
-          </form>
-        </article>
-      </section>
+              <div className="email-input">
+                <div className="input-container">
+                  <p className="sub-title">Password</p>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    required
+                    value={loginPassword}
+                    onChange={(e) => setLoginPassword(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <Link to="/password/forgot">Forgot Password?</Link>
+              <br />
+              <input type="submit" value="Login" classNameName="loginBtn" />
+            </form>
+          </article>
+          <article className="login-side-bg">
+            <img src={loginimg} />
+          </article>
+        </section>
+      </div>
     </Fragment>
   );
 };
