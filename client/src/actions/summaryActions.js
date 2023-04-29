@@ -8,6 +8,9 @@ import {
   ALL_SUMMARY_SUCCESS,
   ALL_SUMMARY_FAIL,
   CLEAR_ERRORS,
+  SINGLE_SUMMARY_REQUEST,
+  SINGLE_SUMMARY_SUCCESS,
+  SINGLE_SUMMARY_FAIl,
 } from "../constants/summaryConstants";
 
 export const createSummary = (newSummary) => async (dispatch) => {
@@ -49,6 +52,25 @@ export const getAllSummaries = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: ALL_SUMMARY_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const getSingleSummary = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: SINGLE_SUMMARY_REQUEST,
+    });
+    const { data } = await axios.get(`/api/v1/summary/${id}`);
+    
+    dispatch({
+      type: SINGLE_SUMMARY_SUCCESS,
+      payload: data.summary,
+    });
+  } catch (error) {
+    dispatch({
+      type: SINGLE_SUMMARY_FAIl,
       payload: error.response.data.message,
     });
   }

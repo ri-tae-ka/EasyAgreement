@@ -11,6 +11,7 @@ import Signup from "./component/user/Signup";
 import Login from "./component/user/Login";
 import Summary from "./component/summary/Summary";
 import Summaries from "./component/summary/Summaries";
+import SingleSummary from "./component/summary/SingleSummary";
 
 function App() {
   useEffect(() => {
@@ -35,6 +36,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/summaries" element={<Summaries />} />
+        </Routes>
+        <Routes>
+          <Route path="/summary/:id" element={<SingleSummary />} />
         </Routes>
         <Footer />
       </Router>

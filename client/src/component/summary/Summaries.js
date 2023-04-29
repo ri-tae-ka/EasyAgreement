@@ -16,7 +16,7 @@ const Summaries = () => {
   return (
     <Fragment>
       <div className="documents-page">
-        <h1>Your Documents</h1>
+        <h1 className="title">Your Documents</h1>
         <div className="allSummaries">
           {loading ? (
             <p>Loading...</p>

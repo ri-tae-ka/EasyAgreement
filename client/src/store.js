@@ -4,6 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { userReducer } from "./reducers/userReducer";
 import {
   createSummaryReducer,
+  singleSummaryReducer,
   summaryReducer,
 } from "./reducers/summaryReducer";
 
@@ -11,6 +12,7 @@ const reducer = combineReducers({
   user: userReducer,
   newSummary: createSummaryReducer,
   summaries: summaryReducer,
+  singleSummary: singleSummaryReducer,
 });
 
 let initialState = {};
