@@ -44,7 +44,7 @@ const Header = () => {
           </li>
           {isAuthenticated ? (
             <li>
-              <Link to="/documents">{user.name}</Link>
+              <Link to="/summaries">{user.name}</Link>
             </li>
           ) : (
             <li>

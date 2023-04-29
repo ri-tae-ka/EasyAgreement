@@ -10,6 +10,7 @@ import Home from "./component/home/Home";
 import Signup from "./component/user/Signup";
 import Login from "./component/user/Login";
 import Summary from "./component/summary/Summary";
+import Summaries from "./component/summary/Summaries";
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/summary" element={<Summary />} />
+        </Routes>
+        <Routes>
+          <Route path="/summaries" element={<Summaries />} />
         </Routes>
         <Footer />
       </Router>

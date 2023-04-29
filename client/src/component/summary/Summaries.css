@@ -1,0 +1,27 @@
+.documents-page {
+    background-color: #F3F9FB;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    color: #113F67;
+    margin: 0;
+    padding: 10px;
+}
+
+.single {
+    padding: 10px;
+    margin: 10px 50px;
+    background: #CCF2F4;
+    border-radius: 20px;
+    color: #113F67;
+}
