@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSummary, clearErrors } from "../../actions/summaryActions";
 import { CREATE_SUMMARY_RESET } from "../../constants/summaryConstants";
@@ -8,6 +8,9 @@ const Summary = () => {
 
   const [inputValue, setInputValue] = useState("");
 
+  const inputFileRef = useRef(null);
+  const resultTextRef = useRef(null);
+
   const { loading, error, success } = useSelector((state) => state.newSummary);
 
   const [date, setDate] = useState(new Date());
@@ -16,10 +19,6 @@ const Summary = () => {
     month: "long",
     day: "numeric",
   };
-
-  function handleInputChange(event) {
-    setInputValue(event.target.value);
-  }
 
   const isInputEmpty = inputValue.trim() === "";
 
@@ -37,6 +36,22 @@ const Summary = () => {
       dispatch({ type: CREATE_SUMMARY_RESET });
     }
   }, [dispatch, error, success]);
+
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append("pdfFile", inputFileRef.current.files[0]);
+
+    fetch("/extract-text", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.text())
+      .then((extractedText) => {
+        resultTextRef.current.value = extractedText;
+        setInputValue(extractedText);
+        console.log(extractedText);
+      });
+  };
 
   const handleSubmit = async (e) => {
     const description = window.prompt("Please enter Description.");
@@ -63,10 +78,17 @@ const Summary = () => {
       <form>
         <h3>{date.toLocaleDateString("en-US", options).toLowerCase()}</h3>
         <section>
+          <input type="file" ref={inputFileRef} accept="application/pdf" />
+          <button type="button" onClick={handleUpload}>
+            Upload
+          </button>
           <textarea
+            ref={resultTextRef}
+            placeholder="Your pdf text will appear here"
+            style={{ height: "200px", width: "500px" }}
+            readOnly
             id="input"
             value={inputValue}
-            onChange={handleInputChange}
           />
         </section>
         <button
