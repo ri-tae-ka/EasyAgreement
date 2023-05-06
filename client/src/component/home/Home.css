@@ -1,0 +1,116 @@
+.top-section {
+    display: flex;
+    width: 100%;
+}
+
+.left-side {
+    flex: 1;
+    margin: 10px;
+}
+
+.left-side:first-child {
+    padding: 30px;
+}
+
+.left-side:nth-child(2) {
+    padding: 50px;
+    color: #226597;
+}
+
+.left-side:nth-child(2)>div {
+    padding: 20px 0;
+}
+
+.left-side:nth-child(2)>div>p {
+    font-family: 'IM FELL Great Primer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.left-side:nth-child(2)>a {
+    text-decoration: none;
+    background: #87C0CD;
+    border-radius: 20px;
+    padding: 20px 50px;
+    color: #113F67;
+    font-family: 'IM FELL Great Primer';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 37px;
+}
+
+.left-side:nth-child(2)>a:hover {
+    background: #113F67;
+    color: #87C0CD;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 37px;
+    padding: 25px 55px;
+}
+
+.second-section {
+    text-align: center;
+    padding: 10px 90px;
+}
+
+.second-section>h3 {
+    color: #226597;
+    margin: 50px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+}
+
+.second-section>p {
+    color: #F3F9FB;
+    background-color: #87C0CD;
+    border-radius: 10px;
+    padding: 50px 80px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+}
+
+.third-section {
+    display: flex;
+    width: 100%;
+}
+
+.left-side {
+    flex: 1;
+    margin: 10px;
+}
+
+.left-side:nth-child(1) {
+    padding: 0 80px;
+    color: #226597;
+}
+
+.left-side:nth-child(1)>div>h2 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 48px;
+}
+
+.left-side:nth-child(1)>div>p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+}
+
+.left-side:nth-child(2)>img {
+    width: 620px;
+    height: 386px;
+    margin-left: 40%;
+}
