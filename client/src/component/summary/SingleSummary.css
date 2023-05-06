@@ -2,6 +2,12 @@
     background-color: #F3F9FB;
 }
 
+.menu {
+    float: right;
+    padding: 20px;
+    padding-right: 50px;
+}
+
 .summary-topic {
     color: #113F67;
     padding: 10px 50px;

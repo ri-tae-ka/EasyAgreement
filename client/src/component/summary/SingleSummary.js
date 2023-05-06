@@ -35,14 +35,16 @@ const SingleSummary = () => {
 
   return (
     <Fragment>
-      <Menu
-        fontSize={fontSize}
-        readAloud={readAloud}
-        onFontSizeChange={setFontSize}
-        onReadAloudChange={setReadAloud}
-        description={summary.description}
-        summary={summary.summary}
-      />
+      <div className="menu">
+        <Menu
+          fontSize={fontSize}
+          readAloud={readAloud}
+          onFontSizeChange={setFontSize}
+          onReadAloudChange={setReadAloud}
+          description={summary.description}
+          summary={summary.summary}
+        />
+      </div>
       <div className="single-summary-page">
         {loading ? (
           <p>Loading...</p>
