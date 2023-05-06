@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { createSummary, clearErrors } from "../../actions/summaryActions";
 import { CREATE_SUMMARY_RESET } from "../../constants/summaryConstants";
 import axios from "axios";
+import "./Summary.css";
 
 const Summary = () => {
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState("");
+  const [inputFile, setInputFile] = useState(null);
+  const [selectedFileName, setSelectedFileName] = useState("");
 
   const inputFileRef = useRef(null);
   const resultTextRef = useRef(null);
@@ -89,7 +92,12 @@ const Summary = () => {
     }
   }
 
-  
+  const handleInputFile = (event) => {
+    const file = event.target.files[0];
+    setInputFile(file);
+    setSelectedFileName(file.name);
+  };
+
   const handleUpload = () => {
     const formData = new FormData();
     formData.append("pdfFile", inputFileRef.current.files[0]);
@@ -129,28 +137,43 @@ const Summary = () => {
   return (
     <Fragment>
       <form>
-        <h3>{date.toLocaleDateString("en-US", options).toLowerCase()}</h3>
-        <section>
-          <input type="file" ref={inputFileRef} accept="application/pdf" />
-          <button type="button" onClick={handleUpload}>
-            Upload
-          </button>
-          <textarea
-            ref={resultTextRef}
-            placeholder="Your summarized text will appear here..."
-            style={{ height: "200px", width: "500px" }}
-            readOnly
-            id="input"
-            value={inputValue}
-          />
+        <section className="create-summary">
+          <div className="left-upload-section create-summary-left">
+            <input
+              type="file"
+              ref={inputFileRef}
+              accept="application/pdf"
+              onChange={handleInputFile}
+            />
+            <br />
+            {selectedFileName && (
+              <div className="file-name">{selectedFileName}</div>
+            )}
+            <button type="button" onClick={handleUpload} className="uploadBtn">
+              Generate Summary
+            </button>
+          </div>
+          <div className="right-summary-section create-summary-left">
+            <h3 className="summary-date">
+              {date.toLocaleDateString("en-US", options).toLowerCase()}
+            </h3>
+            <textarea
+              ref={resultTextRef}
+              placeholder="Your summarized text will appear here..."
+              style={{ height: "200px", width: "500px" }}
+              readOnly
+              id="input"
+              value={inputValue}
+            />
+            <button
+              className="summary-save-button"
+              disabled={isInputEmpty}
+              onClick={handleSubmit}
+            >
+              Save
+            </button>
+          </div>
         </section>
-        <button
-          className="save-button"
-          disabled={isInputEmpty}
-          onClick={handleSubmit}
-        >
-          Save
-        </button>
       </form>
     </Fragment>
   );
