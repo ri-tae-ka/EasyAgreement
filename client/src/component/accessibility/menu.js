@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import "./menu.css";
+import acc from "../../images/acc.png";
+import fontsize from "../../images/fontsize.png";
+import speak from "../../images/speak.png";
+import translate from "../../images/translate.png";
 
 function Menu({
   fontSize,
@@ -8,6 +13,7 @@ function Menu({
   description,
   summary,
 }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [increaseCount, setIncreaseCount] = useState(0);
 
   const handleIncreaseFontSize = () => {
@@ -28,6 +34,10 @@ function Menu({
     onReadAloudChange(!readAloud);
   };
 
+  const handleToggleMenu = () => {
+    setIsMenuOpen((isOpen) => !isOpen);
+  };
+
   useEffect(() => {
     if (readAloud) {
       const utterance = new SpeechSynthesisUtterance(
@@ -41,14 +51,28 @@ function Menu({
   }, [readAloud, description, summary]);
 
   return (
-    <div>
-      <button className="font-size-button" onClick={handleIncreaseFontSize}>
-        Increase Font Size
-      </button>
-      <button className="read-aloud-button" onClick={handleToggleReadAloud}>
-        {readAloud ? "Stop Reading" : "Read Aloud"}
-      </button>
-      <button>Translate <div id="translate"></div></button>
+    <div className="acc-menu">
+      <img
+        src={acc}
+        className="acc-menu-toggle menu-buttons"
+        onClick={handleToggleMenu}
+        aria-expanded={isMenuOpen}
+      />
+      {isMenuOpen && (
+        <div className="menu-buttons">
+          <button className="font-size-button" onClick={handleIncreaseFontSize}>
+            <img src={fontsize} /> Increase Font Size
+          </button>
+          <button className="read-aloud-button" onClick={handleToggleReadAloud}>
+            <img src={speak} />
+            {readAloud ? "Stop Reading" : "Read Aloud"}
+          </button>
+          <button>
+            <img src={translate} />
+            Translate <div id="translate"></div>
+          </button>
+        </div>
+      )}
     </div>
   );
 }

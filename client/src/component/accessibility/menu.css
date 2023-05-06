@@ -1,0 +1,38 @@
+.acc-menu {
+    background: #113F67;
+    border-radius: 20px;
+    max-width: 350px;
+}
+
+.acc-menu-toggle {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    float: right;
+    padding: 20px;
+}
+
+.menu-buttons {
+    padding: 15px;
+}
+
+.acc-menu button {
+    display: block;
+    margin-bottom: 15px;
+    width: 250px;
+    text-align: left;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    border-radius: 7px;
+    border: none;
+    background-color: #CCF2F4;
+}
+
+.acc-menu button>img {
+    height: 30px;
+    width: 30px;
+    padding-right: 10px;
+}
