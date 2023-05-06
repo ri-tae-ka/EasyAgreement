@@ -48,17 +48,19 @@ const SingleSummary = () => {
           <p>Loading...</p>
         ) : (
           <div className="summary-header">
-            <div className="design-topic">
+            <div className="summary-topic">
               <h3 className="summary-name">{summary.name}</h3>
               <p className="summary-date">{formattedDate}</p>
             </div>
-            <h4>Description</h4>
-            <div className="summary-body" style={{ fontSize }}>
-              <p>{summary.description}</p>
-            </div>
-            <h4>Summary</h4>
-            <div className="summary-body" style={{ fontSize }}>
-              <p>{summary.summary}</p>
+            <div className="summary-detail">
+              <h4>Description</h4>
+              <div className="summary-body" style={{ fontSize }}>
+                <p>{summary.description}</p>
+              </div>
+              <h4>Summary</h4>
+              <div className="summary-body" style={{ fontSize }}>
+                <p>{summary.summary}</p>
+              </div>
             </div>
           </div>
         )}

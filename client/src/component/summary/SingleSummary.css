@@ -2,7 +2,34 @@
     background-color: #F3F9FB;
 }
 
+.summary-topic {
+    color: #113F67;
+    padding: 10px 50px;
+    background-color: #CCF2F4;
+    border: 1px dotted #113F67;
+}
+
+.summary-date {
+    color: #113F67;
+}
+
 .summary-body {
     background: #CCF2F4;
     border-radius: 20px;
+    padding: 30px 60px;
+    font-family: 'Inter';
+    font-style: normal;
+    line-height: 25px;
+    color: #113F67;
+}
+
+.summary-detail {
+    padding: 20px 50px;
+    color: #113F67;
+}
+
+.summary-detail>h4 {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 48px;
 }
