@@ -9,11 +9,80 @@
 }
 
 .form-container {
-    height: 100%;
-    width: 60%;
+    padding: 20px;
+    color: #226597;
+}
+
+.intro {
+    text-align: center;
+}
+
+.intro>h1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 30px;
+    margin: 10px;
+}
+
+.intro>a {
+    color: #226597;
+    font-size: 15px;
+}
+
+.intro>a:hover {
+    color: #113F67;
+    font-size: 16px;
+}
+
+.form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    margin: auto;
+    padding: 2vmax 5vmax;
+    height: 70%;
+    justify-content: space-evenly;
+    transition: all 0.5s;
+    background-color: #CCF2F4;
+    border-radius: 10px;
+}
+
+.form>div>div>input {
+    padding: 1vmax;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #226597;
+    border-radius: 4px;
+    outline: none;
+}
+
+.form>a {
+    color: #226597;
+    text-decoration: none;
+    align-self: flex-end;
+    transition: all 0.5s;
+    font: 500 0.8vmax;
+}
+
+.form>a:hover {
+    color: #113F67;
+}
+
+.loginBtn {
+    border: none;
+    background-color: #113F67;
+    color: white;
+    font: 300 0.9vmax;
+    width: 100%;
+    padding: 0.8vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+    margin-top: 2vmax;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+}
+
+.loginBtn:hover {
+    background-color: #226597;
 }

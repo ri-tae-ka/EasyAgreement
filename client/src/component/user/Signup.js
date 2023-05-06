@@ -56,12 +56,11 @@ const Signup = () => {
             <img src={signupimg} />
           </article>
           <article class="form-container">
-            <div class="intro">
-              <h1>Signup</h1>
-              <p>Please Enter Your details</p>
-            </div>
-
             <form class="form" onSubmit={handleSubmit}>
+              <div class="intro">
+                <h1>Signup</h1>
+                <p>Please Enter Your details</p>
+              </div>
               <div class="email-input">
                 <div class="input-container">
                   <p class="sub-title">Name</p>

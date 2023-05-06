@@ -17,3 +17,44 @@
     justify-content: center;
     gap: 2rem;
 }
+
+.intro {
+    text-align: center;
+}
+
+.intro>h1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 30px;
+    margin: 10px;
+}
+
+.intro>a {
+    color: #226597;
+    font-size: 15px;
+}
+
+.intro>a:hover {
+    color: #113F67;
+    font-size: 16px;
+}
+
+
+.singupBtn {
+    border: none;
+    background-color: #113F67;
+    color: white;
+    font: 300 0.9vmax;
+    width: 100%;
+    padding: 0.8vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+    margin-top: 2vmax;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+}
+
+.singupBtn:hover {
+    background-color: #226597;
+}

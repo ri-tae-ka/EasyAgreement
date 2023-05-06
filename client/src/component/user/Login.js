@@ -36,12 +36,11 @@ const Login = () => {
       <div className="login-page">
         <section className="login-container">
           <article className="form-container">
-            <div className="intro">
-              <h1>Login</h1>
-              <Link to="/signup">New here?</Link>
-            </div>
-
             <form className="form" onSubmit={handleSubmit}>
+              <div className="intro">
+                <h1>Login</h1>
+                <Link to="/signup">New here?</Link>
+              </div>
               <div className="email-input">
                 <div className="input-container">
                   <p className="sub-title">Email Address</p>
@@ -72,7 +71,7 @@ const Login = () => {
 
               <Link to="/password/forgot">Forgot Password?</Link>
               <br />
-              <input type="submit" value="Login" classNameName="loginBtn" />
+              <input type="submit" value="Login" className="loginBtn" />
             </form>
           </article>
           <article className="login-side-bg">
