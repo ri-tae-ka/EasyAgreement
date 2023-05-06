@@ -36,7 +36,10 @@ const Summaries = () => {
                       })
                         .format(new Date(summary.createdAt))
                         .toLowerCase()}
-                      <h3>{summary.name}</h3>
+                      <div className="summary-details">
+                        <h3>{summary.name}</h3>
+                        <p>{summary.description}</p>
+                      </div>
                     </Link>
                   </div>
                 ))}
