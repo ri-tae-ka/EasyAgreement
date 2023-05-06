@@ -3,3 +3,5 @@
 /server/config/config.env
 
 /client/node_modules
+
+/client/.env

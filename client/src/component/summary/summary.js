@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSummary, clearErrors } from "../../actions/summaryActions";
 import { CREATE_SUMMARY_RESET } from "../../constants/summaryConstants";
+import axios from "axios";
 
 const Summary = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Summary = () => {
     day: "numeric",
   };
 
-  const isInputEmpty = inputValue.trim() === "";
+  const isInputEmpty = inputValue?.trim() === "";
 
   useEffect(() => {
     if (error) {
@@ -37,6 +38,58 @@ const Summary = () => {
     }
   }, [dispatch, error, success]);
 
+  const API_HOST = "https://api.meaningcloud.com/summarization-1.0";
+
+  async function condense(text) {
+    try {
+      const qs = require("qs");
+
+      const requestBody = qs.stringify({
+        key: process.env.REACT_APP_MEANINGCLOUD_API,
+        txt: text,
+        sentences: 100,
+      });
+
+      const response = await axios.post(API_HOST, requestBody, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+
+      const summary = response.data.summary.replace(/\s+/g, " ");
+      return summary;
+    } catch (error) {
+      window.alert(error);
+      return null;
+    }
+  }
+
+  async function generateSummary(extractText) {
+    const options = {
+      method: "POST",
+      url: "https://gpt-summarization.p.rapidapi.com/summarize",
+      headers: {
+        "content-type": "application/json",
+        "X-RapidAPI-Key": process.env.REACT_APP_GPT_API,
+        "X-RapidAPI-Host": "gpt-summarization.p.rapidapi.com",
+      },
+      data: {
+        text: await condense(extractText),
+        num_sentences: 5,
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+      const summarizedText = response.data.summary;
+      return summarizedText;
+    } catch (error) {
+      window.alert(error);
+      return null;
+    }
+  }
+
+  
   const handleUpload = () => {
     const formData = new FormData();
     formData.append("pdfFile", inputFileRef.current.files[0]);
@@ -46,10 +99,10 @@ const Summary = () => {
       body: formData,
     })
       .then((response) => response.text())
-      .then((extractedText) => {
-        resultTextRef.current.value = extractedText;
-        setInputValue(extractedText);
-        console.log(extractedText);
+      .then(async (extractedText) => {
+        const summarizedText = await generateSummary(extractedText);
+        setInputValue(summarizedText);
+        resultTextRef.current.value = summarizedText;
       });
   };
 
@@ -67,7 +120,7 @@ const Summary = () => {
     try {
       await dispatch(createSummary(myForm));
       window.alert("New Document Saved!");
-      window.location = "/summary";
+      window.location = "/summaries";
     } catch (error) {
       window.alert(error.message);
     }
@@ -84,7 +137,7 @@ const Summary = () => {
           </button>
           <textarea
             ref={resultTextRef}
-            placeholder="Your pdf text will appear here"
+            placeholder="Your summarized text will appear here..."
             style={{ height: "200px", width: "500px" }}
             readOnly
             id="input"
