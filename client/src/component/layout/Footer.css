@@ -1,0 +1,28 @@
+footer {
+    background-color: #113F67;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+    color: #F3F9FB;
+}
+
+.bottom-footer>p {
+    margin: 0;
+    padding: 20px 20px 0px 20px;
+    font-size: 14px;
+}
+
+.top-footer {
+    display: flex;
+    width: 100%;
+}
+
+.left-top-footer {
+    flex: 1;
+    margin: 10px;
+}
+
+.left-top-footer>img {
+    height: 50px;
+    width: 50px;
+}
