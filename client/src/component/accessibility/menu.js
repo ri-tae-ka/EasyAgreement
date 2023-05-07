@@ -3,7 +3,8 @@ import "./menu.css";
 import acc from "../../images/acc.png";
 import fontsize from "../../images/fontsize.png";
 import speak from "../../images/speak.png";
-import translate from "../../images/translate.png";
+import translateimg from "../../images/translateimg.png";
+import axios from "axios";
 
 function Menu({
   fontSize,
@@ -12,6 +13,8 @@ function Menu({
   onReadAloudChange,
   description,
   summary,
+  onTranslateClick,
+  translatedText,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [increaseCount, setIncreaseCount] = useState(0);
@@ -38,10 +41,21 @@ function Menu({
     setIsMenuOpen((isOpen) => !isOpen);
   };
 
+  const handleTranslateClick = () => {
+    if (onTranslateClick) {
+      onTranslateClick();
+    }
+  };
+
   useEffect(() => {
+    let text = summary;
+    if (translatedText !== null) {
+      text = translatedText;
+    }
+
     if (readAloud) {
       const utterance = new SpeechSynthesisUtterance(
-        "Description: " + description + " Summary: " + summary
+        "Description: " + description + " Summary: " + text
       );
       utterance.onend = () => {
         onReadAloudChange(false);
@@ -60,16 +74,16 @@ function Menu({
       />
       {isMenuOpen && (
         <div className="menu-buttons">
-          <button className="font-size-button" onClick={handleIncreaseFontSize}>
+          <button onClick={handleIncreaseFontSize}>
             <img src={fontsize} /> Increase Font Size
           </button>
-          <button className="read-aloud-button" onClick={handleToggleReadAloud}>
+          <button onClick={handleToggleReadAloud}>
             <img src={speak} />
             {readAloud ? "Stop Reading" : "Read Aloud"}
           </button>
-          <button>
-            <img src={translate} />
-            Translate <div id="translate"></div>
+          <button onClick={handleTranslateClick}>
+            <img src={translateimg} />
+            Translate
           </button>
         </div>
       )}

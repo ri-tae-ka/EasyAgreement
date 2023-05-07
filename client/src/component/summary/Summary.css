@@ -96,6 +96,11 @@ textarea {
     margin-right: 7vmax;
 }
 
+.summary-save-button:disabled {
+    background-color: #226597;
+    cursor: default;
+}
+
 .summary-save-button:hover {
     background-color: #226597;
 }
