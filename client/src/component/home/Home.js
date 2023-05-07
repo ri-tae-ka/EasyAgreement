@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 import Metadata from "../layout/Metadata";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import loginimg from "../../images/loginimg.png";
+import homepage from "../../images/homepage.png";
+import homedemo from "../../images/home-demo.png";
 
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
       <Metadata title="EasyAgreement" />
       <div className="top-section">
         <div className="left-side">
-          <img src={loginimg} />
+          <img src={homepage} />
         </div>
         <div className="left-side">
           <div>
@@ -61,7 +62,7 @@ const Home = () => {
           </div>
         </div>
         <div className="left-side">
-          <img src={loginimg} />
+          <img style={{ border: "2px solid #226597" }} src={homedemo} />
         </div>
       </div>
     </Fragment>

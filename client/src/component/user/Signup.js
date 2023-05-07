@@ -3,7 +3,7 @@ import "./Signup.css";
 import { Link } from "react-router-dom";
 import { signup, clearErrors } from "../../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import signupimg from "../../images/loginimg.png";
+import signupimg from "../../images/signupimg.png";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const Signup = () => {
       <div className="signup-page">
         <section class="signup-container">
           <article className="login-side-bg">
-            <img src={signupimg} />
+            <img style={{marginLeft: "100px"}} src={signupimg} />
           </article>
           <article class="form-container">
             <form class="form" onSubmit={handleSubmit}>

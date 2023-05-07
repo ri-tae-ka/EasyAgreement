@@ -39,9 +39,15 @@ const Header = () => {
           <li>
             <a href="/">home</a>
           </li>
-          <li>
-            <a href="/about">about</a>
-          </li>
+          {isAuthenticated ? (
+            <li>
+              <Link to="/summary">summarize contracts</Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/about">about</Link>
+            </li>
+          )}
           {isAuthenticated ? (
             <li>
               <Link to="/summaries">{user.name}</Link>

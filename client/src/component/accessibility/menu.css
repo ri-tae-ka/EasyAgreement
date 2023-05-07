@@ -29,6 +29,7 @@
     border-radius: 7px;
     border: none;
     background-color: #CCF2F4;
+    cursor: pointer;
 }
 
 .acc-menu button>img {

@@ -1,0 +1,48 @@
+.aboutPage {
+    height: 100%;
+    max-width: 100%;
+    padding: 2vmax;
+}
+
+.aboutContainer {
+    align-items: center;
+}
+
+.aboutContainer>p {
+    word-spacing: 5px;
+    text-align: center;
+    text-align: center;
+    padding: 30px 100px;
+}
+
+.aboutContainer>p>span {
+    font-size: larger;
+    font-weight: bold;
+    color: #113F67;
+}
+
+.aboutContainer>div {
+    text-align: center;
+    font-family: 'Grape Nuts';
+    margin-top: 50px;
+}
+
+.aboutHeading {
+    color: #113F67;
+    text-align: center;
+    font-size: 2vmax;
+    border-bottom: 1px solid #113F67;
+    width: 20vmax;
+    margin: 3vmax auto;
+}
+
+@media screen and (max-width: 600px) {
+    .aboutPage {
+        height: 100%;
+        max-width: 100%;
+    }
+
+    .aboutContainer {
+        margin: 5vmax;
+    }
+}

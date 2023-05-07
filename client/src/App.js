@@ -7,6 +7,7 @@ import store from "./store";
 import Header from "./component/layout/Header";
 import Footer from "./component/layout/Footer";
 import Home from "./component/home/Home";
+import About from "./component/home/About";
 import Signup from "./component/user/Signup";
 import Login from "./component/user/Login";
 import Summary from "./component/summary/Summary";
@@ -30,6 +31,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/login" element={<Login />} />
+        </Routes>
+        <Routes>
+          <Route path="/about" element={<About />} />
         </Routes>
         <Routes>
           <Route path="/summary" element={<Summary />} />

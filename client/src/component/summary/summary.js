@@ -50,7 +50,7 @@ const Summary = () => {
       const requestBody = qs.stringify({
         key: process.env.REACT_APP_MEANINGCLOUD_API,
         txt: text,
-        sentences: 100,
+        sentences: 500,
       });
 
       const response = await axios.post(API_HOST, requestBody, {
@@ -78,7 +78,7 @@ const Summary = () => {
       },
       data: {
         text: await condense(extractText),
-        num_sentences: 5,
+        num_sentences: 15,
       },
     };
 

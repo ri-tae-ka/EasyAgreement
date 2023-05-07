@@ -98,7 +98,7 @@ textarea {
 
 .summary-save-button:disabled {
     background-color: #226597;
-    cursor: default;
+    cursor: no-drop;
 }
 
 .summary-save-button:hover {
