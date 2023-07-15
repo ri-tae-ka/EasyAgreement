@@ -4,24 +4,33 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, logout } from "../../actions/userActions";
 import logo from "../../images/logo.png";
+import { useAuth } from "@pangeacyber/react-auth";
 
 const Header = () => {
   const dispatch = useDispatch();
 
-  const { user, loading, isAuthenticated, error } = useSelector(
-    (state) => state.user
-  );
+  const auth = useAuth();
 
-  useEffect(() => {
-    if (error) {
-      window.alert(error);
-      dispatch(clearErrors());
-    }
-  }, [dispatch, error]);
+  const { user } = useAuth();
+  const { authenticated, login, logout } = useAuth();
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogin = () => {
+    auth.login({ returnPath: "/" });
   };
+
+  // const { user, loading, isAuthenticated, error } = useSelector(
+  //   (state) => state.user
+  // );
+
+  // useEffect(() => {
+  //   if (error) {
+  //     dispatch(clearErrors());
+  //   }
+  // }, [dispatch, error]);
+
+  // const handleLogout = () => {
+  //   dispatch(logout());
+  // };
 
   return (
     <Fragment>
@@ -39,7 +48,7 @@ const Header = () => {
           <li>
             <a href="/">home</a>
           </li>
-          {isAuthenticated ? (
+          {authenticated ? (
             <li>
               <Link to="/summary">summarize contracts</Link>
             </li>
@@ -48,18 +57,18 @@ const Header = () => {
               <Link to="/about">about</Link>
             </li>
           )}
-          {isAuthenticated ? (
+          {authenticated ? (
             <li>
-              <Link to="/summaries">{user.name}</Link>
+              <Link to="/summaries">{user.profile.first_name}</Link>
             </li>
           ) : (
             <li>
-              <Link to="/login">login</Link>
+              <Link to="/login" onClick={() => login()}>login</Link>
             </li>
           )}
-          {isAuthenticated && (
+          {authenticated && (
             <li>
-              <a href="/" onClick={handleLogout}>
+              <a href="/" onClick={() => logout(false)}>
                 logout
               </a>
             </li>

@@ -4,7 +4,7 @@ const catchAsyncError = require("../middleware/catchAsyncError");
 
 //create summary
 exports.createSummary = catchAsyncError(async (req, res, next) => {
-  req.body.user = req.user.id;
+  // req.body.user = req.user.id;
 
   const summary = await Summary.create(req.body);
 
